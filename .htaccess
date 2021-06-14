@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+	DirectoryIndex index.php
+    RewriteEngine On
+#    sesuaikan dengan nama project anda
+    RewriteCond $1 !^(index\.php|images|css|js|robots\.txt|favicon\.ico)
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</IfModule>
